@@ -2,6 +2,7 @@
 
 
 import rospy
+import os
 import actionlib
 from pal_watson_visual_recognition.visual_recognition import PalWatsonVR
 from pal_watson_visual_recognition.msg import ClassifyImageAction
@@ -24,7 +25,11 @@ class WatsonServer:
         self.image_sub = rospy.Subscriber("image", Image, self.image_cb)
         self.tts_client = actionlib.SimpleActionClient("tts",
                                                         pal_interaction_msgs.msg.TtsAction)
+        rospy.loginfo("Waiting for TTS Server")
+        self.tts_client.wait_for_server()
+        rospy.loginfo("Connected to TTS Server")
         self.action_server.start()
+        rospy.loginfo("Visual recognition server started")
 
     def classify_cb(self, goal):
         if not self.last_img:
@@ -63,7 +68,21 @@ class WatsonServer:
     def image_cb(self, msg):
         self.last_img = msg
 
-if __name__ == "__main__":
+
+def main():
     rospy.init_node("watson_visual_recog_server")
-    server = WatsonServer(api_key=rospy.get_param("~api_key"))
+    api_key = rospy.get_param("~api_key", None)
+    if not api_key:
+        default_api_key_file = os.getenv("HOME") + "/.pal/watson_visual_recog_api_key.txt"
+        api_key_file = rospy.get_param("~watson_api_key_file", default_api_key_file)
+        if not os.path.isfile(api_key_file):
+            rospy.logerr("No api_key param exists and file \"{}\" does not exist, can't operate without a key".format(api_key_file))
+            return
+        else:
+            with open(api_key_file, "r") as f:
+                api_key = f.read()
+    server = WatsonServer(api_key=api_key)
     rospy.spin()
+
+if __name__ == "__main__":
+    main()
