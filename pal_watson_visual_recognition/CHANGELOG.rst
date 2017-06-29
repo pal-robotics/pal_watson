@@ -2,8 +2,8 @@
 Changelog for package pal_watson_visual_recognition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2017-06-29)
+------------------
 * Added watson dev cloud dependency
 * Contributors: Victor Lopez
 
