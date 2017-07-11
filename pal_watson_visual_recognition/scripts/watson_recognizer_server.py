@@ -80,7 +80,9 @@ def main():
             return
         else:
             with open(api_key_file, "r") as f:
-                api_key = f.read()
+                api_file_contents = f.read()
+                api_key = api_file_contents.splitlines()[0]
+
     server = WatsonServer(api_key=api_key)
     rospy.spin()
 

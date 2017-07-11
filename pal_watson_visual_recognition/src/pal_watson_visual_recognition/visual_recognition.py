@@ -12,6 +12,10 @@ class PalWatsonVR:
     def classify_file(self, image_file):
         return self.api.classify(images_file=image_file)
 
+    def classify_file_path(self, image_path):
+        with open(image_path, "r") as f:
+            return self.api.classify(images_file=f)
+
     def classify_msg(self, image_msg):
         with RosImageTmpFile(image_msg) as f:
             return self.classify_file(image_file=f)
