@@ -1,0 +1,5 @@
+<launch>
+    <test test-name="test_watson_vr_api" pkg="pal_watson_visual_recognition" type="test_watson_vr_api.py">
+        <param name="watson_api_key_file" value="$(find pal_watson_keys)/config/watson_visual_recog_api_key.txt"/>
+    </test>
+</launch>
