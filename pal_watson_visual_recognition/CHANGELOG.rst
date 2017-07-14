@@ -2,8 +2,8 @@
 Changelog for package pal_watson_visual_recognition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2017-07-14)
+------------------
 * Add unit test
 * Contributors: Victor Lopez
 
