@@ -2,6 +2,11 @@
 Changelog for package pal_watson_visual_recognition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add unit test
+* Contributors: Victor Lopez
+
 0.0.3 (2017-07-11)
 ------------------
 * Fix multiline key and add classify image by path
