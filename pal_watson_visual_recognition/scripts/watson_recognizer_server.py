@@ -24,9 +24,6 @@ class WatsonServer:
         self.image_sub = rospy.Subscriber("image", Image, self.image_cb)
         self.tts_client = actionlib.SimpleActionClient("tts",
                                                         pal_interaction_msgs.msg.TtsAction)
-        rospy.loginfo("Waiting for TTS Server")
-        self.tts_client.wait_for_server()
-        rospy.loginfo("Connected to TTS Server")
         self.action_server.start()
         rospy.loginfo("Visual recognition server started")
 
