@@ -7,7 +7,7 @@ def get_api_key():
     api_key = rospy.get_param("~api_key", None)
     if not api_key:
         default_api_key_file = os.getenv("HOME") + "/.pal/watson_visual_recog_api_key.txt"
-        api_key_file = rospy.get_param("~watson_api_key_file", default_api_key_file)
+        api_key_file = rospy.get_param("~api_key_file", default_api_key_file)
         if not os.path.isfile(api_key_file):
             rospy.logerr("No api_key param exists and file \"{}\" does not exist, can't operate without a key".format(api_key_file))
             return None
